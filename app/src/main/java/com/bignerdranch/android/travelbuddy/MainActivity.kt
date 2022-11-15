@@ -2,12 +2,15 @@ package com.bignerdranch.android.travelbuddy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.URL
 
@@ -18,17 +21,41 @@ class MainActivity : AppCompatActivity() {
     var conversionRate = 0f
 
     private lateinit var et_firstConversion: EditText
+    private lateinit var et_secondConversion: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        spinnerSetup()
-//        textChanged()
+        spinnerSetup()
+        textChanged()
+    }
+
+    private fun textChanged() {
+        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion) //find by reference
+        et_firstConversion.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                Log.d("Main", "Before Text Changed")
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.d("Main", "On Text Changed")
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                try {
+                    getApiResult()
+                } catch (e: Exception) {
+                    Log.e("Main", "$e")
+                }
+            }
+
+        })
     }
 
     private fun getApiResult() {
-        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion)
+        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion) //find by reference
+        et_secondConversion = findViewById<EditText>(R.id.et_secondConversion)
         if(et_firstConversion != null
             && et_firstConversion.text.isNotEmpty() && et_firstConversion.text.isNotBlank()) {
             val API = "https://api.freecurrencyapi.com/v1/latest?apikey=GuuQ5SDlbWeuIswftHTAzIZrEibHsi7vvDLcpMZL&currencies=$convertedToCurrency&base_currency=$baseCurrency" //might have problem
@@ -46,16 +73,79 @@ class MainActivity : AppCompatActivity() {
                         val apiResult = URL(API).readText()
                         val jsonObject = JSONObject(apiResult)
 
-                        conversionRate = jsonObject.getJSONObject("data").getString(convertedToCurrency).toFloat()
+                        conversionRate = jsonObject.getJSONObject("data").getString(convertedToCurrency).toFloat() //possible problem
 
                         Log.d("Main", "$conversionRate")
                         Log.d("Main", apiResult)
+
+                        withContext(Dispatchers.Main) {
+                            val text = ((et_firstConversion.text.toString().toFloat()) * conversionRate).toString()
+                            et_secondConversion?.setText(text)
+                        }
+
                     } catch (e: Exception) {
                         Log.e("Main", "$e")
                     }
                 }
             }
         }
+    } //end of getApiResult method
+
+    private fun spinnerSetup() {
+        val spinner: Spinner = findViewById(R.id.spinner_firstConversion)
+        val spinner2: Spinner = findViewById(R.id.spinner_secondConversion)
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.currencies,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.currencies2,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner2.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                baseCurrency = parent?.getItemAtPosition(position).toString()
+                getApiResult()
+            }
+
+        })
+
+        spinner2.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                convertedToCurrency = parent?.getItemAtPosition(position).toString()
+                getApiResult()
+            }
+
+        })
     }
 
 }
