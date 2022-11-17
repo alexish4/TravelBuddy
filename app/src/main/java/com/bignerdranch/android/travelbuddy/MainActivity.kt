@@ -20,20 +20,20 @@ class MainActivity : AppCompatActivity() {
     var convertedToCurrency = "USD"
     var conversionRate = 0f
 
-    private lateinit var et_firstConversion: EditText
-    private lateinit var et_secondConversion: EditText
+    private lateinit var et_firstCurrencyConversion: EditText
+    private lateinit var et_secondCurrencyConversion: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        spinnerSetup()
-        textChanged()
+        spinnerCurrencySetup()
+        textCurrencyChanged()
     }
 
-    private fun textChanged() {
-        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion) //find by reference
-        et_firstConversion.addTextChangedListener(object: TextWatcher {
+    private fun textCurrencyChanged() {
+        et_firstCurrencyConversion = findViewById<EditText>(R.id.et_firstCurrencyConversion) //find by reference
+        et_firstCurrencyConversion.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 Log.d("Main", "Before Text Changed")
             }
@@ -54,10 +54,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getApiResult() {
-        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion) //find by reference
-        et_secondConversion = findViewById<EditText>(R.id.et_secondConversion)
-        if(et_firstConversion != null
-            && et_firstConversion.text.isNotEmpty() && et_firstConversion.text.isNotBlank()) {
+        et_firstCurrencyConversion = findViewById<EditText>(R.id.et_firstCurrencyConversion) //find by reference
+        et_secondCurrencyConversion = findViewById<EditText>(R.id.et_secondCurrencyConversion)
+        if(et_firstCurrencyConversion != null
+            && et_firstCurrencyConversion.text.isNotEmpty() && et_firstCurrencyConversion.text.isNotBlank()) {
             val API = "https://api.freecurrencyapi.com/v1/latest?apikey=GuuQ5SDlbWeuIswftHTAzIZrEibHsi7vvDLcpMZL&currencies=$convertedToCurrency&base_currency=$baseCurrency" //might have problem
 //            if(baseCurrency == "USD")
 //                API = "https://api.freecurrencyapi.com/v1/latest?apikey=GuuQ5SDlbWeuIswftHTAzIZrEibHsi7vvDLcpMZL&currencies=$convertedToCurrency"
@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity() {
                         Log.d("Main", apiResult)
 
                         withContext(Dispatchers.Main) {
-                            val text = ((et_firstConversion.text.toString().toFloat()) * conversionRate).toString()
-                            et_secondConversion?.setText(text)
+                            val text = ((et_firstCurrencyConversion.text.toString().toFloat()) * conversionRate).toString()
+                            et_secondCurrencyConversion?.setText(text)
                         }
 
                     } catch (e: Exception) {
@@ -91,9 +91,9 @@ class MainActivity : AppCompatActivity() {
         }
     } //end of getApiResult method
 
-    private fun spinnerSetup() {
-        val spinner: Spinner = findViewById(R.id.spinner_firstConversion)
-        val spinner2: Spinner = findViewById(R.id.spinner_secondConversion)
+    private fun spinnerCurrencySetup() {
+        val spinner: Spinner = findViewById(R.id.spinner_firstCurrencyConversion)
+        val spinner2: Spinner = findViewById(R.id.spinner_secondCurrencyConversion)
 
         ArrayAdapter.createFromResource(
             this,
