@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun spinnerSetup() {
-        val spinner: Spinner = findViewById(R.id.spinner_firstConversion)
-        val spinner2: Spinner = findViewById(R.id.spinner_secondConversion)
+        val spinnerlength: Spinner = findViewById(R.id.spinner_firstLengthConversion)
+        val spinnerlength2: Spinner = findViewById(R.id.spinner_secondLengthConversion)
         et_firstLengthConversion = findViewById<EditText>(R.id.et_firstLengthConversion)
         et_secondLengthConversion = findViewById<EditText>(R.id.et_secondLengthConversion)
         ArrayAdapter.createFromResource(
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
+            spinnerlength.adapter = adapter
         }
 
         ArrayAdapter.createFromResource(
@@ -99,9 +99,9 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner2.adapter = adapter
+            spinnerlength2.adapter = adapter
         }
-        spinner.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+        spinnerlength.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                 baseLength = parent?.getItemAtPosition(position).toString()
             }
         })
-        spinner2.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+        spinnerlength2.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
