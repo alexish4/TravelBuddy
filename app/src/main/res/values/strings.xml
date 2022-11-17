@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TravelBuddy</string>
+
+    <string-array name = "temp">
+    <item>Fahrenheit </item>
+    <item>Celsius</item>
+ </string-array>
+
+    <string-array name = "temp2">
+        <item>Fahrenheit </item>
+        <item>Celsius</item>
+    </string-array>
+
 </resources>
