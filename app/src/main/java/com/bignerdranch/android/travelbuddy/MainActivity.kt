@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             if(baseTemp == "Fahrenheit" && covertedtoTemp == "Celsius"){
                 val df = DecimalFormat("##.##")
                 df.roundingMode = RoundingMode.CEILING
-                val text = df.format(((et_firstTempConversion.text.toString().toFloat() -32 )* .5/9)).toString()
+                val text = df.format(((et_firstTempConversion.text.toString().toFloat() -32 )* 5/9)).toString()
                 et_secondTempConversion?.setText(text)
             }
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             else if(baseTemp == covertedtoTemp) {
                 Toast.makeText(
                     applicationContext,
-                    "Cannot convert the same length",
+                    "Cannot convert the same unit",
                     Toast.LENGTH_SHORT
                 ).show()
             }
