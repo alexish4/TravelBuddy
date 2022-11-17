@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        spinnerSetup()
+        spinnerLengthSetup()
         textChangedLength()
     }
 
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun spinnerSetup() {
+    private fun spinnerLengthSetup() {
         val spinnerlength: Spinner = findViewById(R.id.spinner_firstLengthConversion)
         val spinnerlength2: Spinner = findViewById(R.id.spinner_secondLengthConversion)
         et_firstLengthConversion = findViewById<EditText>(R.id.et_firstLengthConversion)
