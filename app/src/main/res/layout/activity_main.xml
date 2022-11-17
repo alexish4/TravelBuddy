@@ -8,28 +8,29 @@
     android:background="#E8E8E8">
 
     <androidx.cardview.widget.CardView
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="10dp"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
-            android:id="@+id/ll_parent"
+            android:id="@+id/ll_Currencyparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="30dp"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/ll_firstConversion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/et_firstCurrencyConversion"
@@ -37,12 +38,12 @@
                     android:layout_height="wrap_content"
                     android:ems="5"
                     android:hint="From"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <Spinner
+                    android:id="@+id/spinner_firstCurrencyConversion"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner_firstCurrencyConversion"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -50,8 +51,8 @@
                 android:id="@+id/ll_secondConversion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/et_secondCurrencyConversion"
@@ -59,12 +60,79 @@
                     android:layout_height="wrap_content"
                     android:ems="5"
                     android:hint="To"
-                    android:inputType="number"/>
+                    android:inputType="number" />
 
                 <Spinner
+                    android:id="@+id/spinner_secondCurrencyConversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_Lengthparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_firstLengthConversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_firstLengthConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner_secondCurrencyConversion"/>
+                    android:ems="5"
+                    android:hint="From"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_firstLengthConversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_secondLengthConversion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_secondLengthConversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="5"
+                    android:hint="To"
+                    android:inputType="number" />
+
+                <Spinner
+                    android:id="@+id/spinner_secondLengthConversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 

@@ -28,4 +28,14 @@
         <item>JPY</item>
 
     </string-array>
+
+    <string-array name="length">
+        //<item>Kilometers</item>
+        //<item>Miles</item>
+    </string-array>
+
+    <string-array name="length2">
+        //<item>Kilometers</item>
+        //<item>Miles</item>
+    </string-array>
 </resources>
