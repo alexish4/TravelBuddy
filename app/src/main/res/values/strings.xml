@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">TravelBuddy</string>
+    <string name="app_name">Currency Converter Pro</string>
+
+    <string-array name="currencies">
+        //<item>Kilometers</item>
+        //<item>Miles</item>
+    </string-array>
+
+    <string-array name="currencies2">
+        //<item>Kilometers</item>
+        //<item>Miles</item>
+    </string-array>
+
 </resources>
