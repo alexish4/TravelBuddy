@@ -18,6 +18,7 @@ import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
+    //currency
     var baseCurrency = "EUR"
     var convertedToCurrency = "USD"
     var conversionRate = 0f
@@ -31,6 +32,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var et_firstCurrencyConversion: EditText
     private lateinit var et_secondCurrencyConversion: EditText
 
+    //temperature
+    var baseTemp = "Fahrenheit"
+    var covertedtoTemp = "Celsius"
+    private lateinit var et_firstTempConversion: EditText
+    private lateinit var et_secondTempConversion: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         //Miles and kilometers
         spinnerLengthSetup()
         textChangedLength()
+
+        //temperature
+        spinnerSetup()
+        textChangedTemp()
     }
 
     private fun textCurrencyChanged() {
@@ -84,19 +95,38 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun textChangedTemp() {
+        et_firstTempConversion = findViewById<EditText>(R.id.et_firstTempConversion) //find by reference
+        et_firstTempConversion.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                Log.d("Main", "Before Text Changed")
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.d("Main", "On Text Changed")
+            }
+            override fun afterTextChanged(s: Editable?) {
+                try {
+                    getTempResult()
+                } catch (e: Exception) {
+                    Log.e("Main", "$e")
+                }
+            }
+        })
+    }
+
     private fun getLengthResult() {
         et_firstLengthConversion = findViewById<EditText>(R.id.et_firstLengthConversion) //find by reference
         et_secondLengthConversion = findViewById<EditText>(R.id.et_secondLengthConversion)
         if(et_firstLengthConversion != null
             && et_firstLengthConversion.text.isNotEmpty() && et_firstLengthConversion.text.isNotBlank()) {
-            if(baseLength == "Kilometers" && convertedToLength == "Miles"){
+            if(baseLength == "KM" && convertedToLength == "MI"){
                 val df = DecimalFormat("#.###")
                 df.roundingMode = RoundingMode.CEILING
                 val text = df.format((et_firstLengthConversion.text.toString().toFloat() *  0.621371)).toString()
                 et_secondLengthConversion?.setText(text)
             }
 
-            else if(baseLength == "Miles" && convertedToLength == "Kilometers"){
+            else if(baseLength == "MI" && convertedToLength == "KM"){
                 val df = DecimalFormat("#.###")
                 df.roundingMode = RoundingMode.CEILING
                 val text2 = df.format((et_firstLengthConversion.text.toString().toFloat()* 1.6093)).toString()
@@ -106,6 +136,35 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(
                     applicationContext,
                     "Cannot convert the same length",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private fun getTempResult() {
+        et_firstTempConversion = findViewById<EditText>(R.id.et_firstTempConversion) //find by reference
+        et_secondTempConversion = findViewById<EditText>(R.id.et_secondTempConversion)
+        if(et_firstTempConversion != null
+            && et_firstTempConversion.text.isNotEmpty() && et_firstTempConversion.text.isNotBlank()) {
+            if(baseTemp == "FA" && covertedtoTemp == "CE"){
+                val df = DecimalFormat("##.##")
+                df.roundingMode = RoundingMode.CEILING
+                val text = df.format(((et_firstTempConversion.text.toString().toFloat() -32 )* 5/9)).toString()
+                et_secondTempConversion?.setText(text)
+            }
+
+
+            else if(baseTemp == "CE" && covertedtoTemp == "FA"){
+                val df = DecimalFormat("##.##")
+                df.roundingMode = RoundingMode.CEILING
+                val text2 = df.format((et_firstTempConversion.text.toString().toFloat() * 1.8 +32)).toString()
+                et_secondTempConversion?.setText(text2)
+            }
+            else if(baseTemp == covertedtoTemp) {
+                Toast.makeText(
+                    applicationContext,
+                    "Cannot convert the same unit",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -204,6 +263,56 @@ class MainActivity : AppCompatActivity() {
                 getApiResult()
             }
 
+        })
+    }
+
+    private fun spinnerSetup() {
+        val spinner: Spinner = findViewById(R.id.spinner_firstTempConversion)
+        val spinner2: Spinner = findViewById(R.id.spinner_secondTempConversion)
+        et_firstTempConversion = findViewById<EditText>(R.id.et_firstTempConversion)
+        et_secondTempConversion = findViewById<EditText>(R.id.et_secondTempConversion)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.temp,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.temp2,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner2.adapter = adapter
+        }
+        spinner.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                baseTemp = parent?.getItemAtPosition(position).toString()
+            }
+        })
+        spinner2.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                covertedtoTemp = parent?.getItemAtPosition(position).toString()
+            }
         })
     }
 

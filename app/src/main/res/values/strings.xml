@@ -30,12 +30,22 @@
     </string-array>
 
     <string-array name="length">
-        //<item>Kilometers</item>
-        //<item>Miles</item>
+        //<item>KM</item>
+        //<item>MI</item>
     </string-array>
 
     <string-array name="length2">
-        //<item>Kilometers</item>
-        //<item>Miles</item>
+        //<item>KM</item>
+        //<item>MI</item>
+    </string-array>
+
+    <string-array name = "temp">
+        <item>FA</item>
+        <item>CE</item>
+    </string-array>
+
+    <string-array name = "temp2">
+        <item>FA</item>
+        <item>CE</item>
     </string-array>
 </resources>
