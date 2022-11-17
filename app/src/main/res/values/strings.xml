@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Currency Converter Pro</string>
 
-    <string-array name="currencies">
+    <string-array name="length">
         //<item>Kilometers</item>
         //<item>Miles</item>
     </string-array>
 
-    <string-array name="currencies2">
+    <string-array name="length2">
         //<item>Kilometers</item>
         //<item>Miles</item>
     </string-array>

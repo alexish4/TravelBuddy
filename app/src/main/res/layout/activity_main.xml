@@ -25,14 +25,14 @@
             android:gravity="center">
 
             <LinearLayout
-                android:id="@+id/ll_firstConversion"
+                android:id="@+id/ll_firstLengthConversion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <EditText
-                    android:id="@+id/et_firstConversion"
+                    android:id="@+id/et_firstLengthConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="5"
@@ -47,14 +47,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_secondConversion"
+                android:id="@+id/ll_secondLengthConversion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <EditText
-                    android:id="@+id/et_secondConversion"
+                    android:id="@+id/et_secondLengthConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="5"

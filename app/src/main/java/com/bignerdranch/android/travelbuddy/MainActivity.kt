@@ -20,21 +20,21 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     
-    var baseCurrency = "Kilometers"
-    var convertedToCurrency = "Miles"
-    private lateinit var et_firstConversion: EditText
-    private lateinit var et_secondConversion: EditText
+    var baseLength = "Kilometers"
+    var convertedToLength = "Miles"
+    private lateinit var et_firstLengthConversion: EditText
+    private lateinit var et_secondLengthConversion: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         spinnerSetup()
-        textChanged()
+        textChangedLength()
     }
 
-    private fun textChanged() {
-        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion) //find by reference
-        et_firstConversion.addTextChangedListener(object: TextWatcher {
+    private fun textChangedLength() {
+        et_firstLengthConversion = findViewById<EditText>(R.id.et_firstLengthConversion) //find by reference
+        et_firstLengthConversion.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 Log.d("Main", "Before Text Changed")
             }
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
             override fun afterTextChanged(s: Editable?) {
                 try {
-                    getResult()
+                    getLengthResult()
                 } catch (e: Exception) {
                     Log.e("Main", "$e")
                 }
@@ -51,25 +51,25 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun getResult() {
-        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion) //find by reference
-        et_secondConversion = findViewById<EditText>(R.id.et_secondConversion)
-        if(et_firstConversion != null
-            && et_firstConversion.text.isNotEmpty() && et_firstConversion.text.isNotBlank()) {
-            if(baseCurrency == "Kilometers" && convertedToCurrency == "Miles"){
+    private fun getLengthResult() {
+        et_firstLengthConversion = findViewById<EditText>(R.id.et_firstLengthConversion) //find by reference
+        et_secondLengthConversion = findViewById<EditText>(R.id.et_secondLengthConversion)
+        if(et_firstLengthConversion != null
+            && et_firstLengthConversion.text.isNotEmpty() && et_firstLengthConversion.text.isNotBlank()) {
+            if(baseLength == "Kilometers" && convertedToLength == "Miles"){
                 val df = DecimalFormat("#.###")
                 df.roundingMode = RoundingMode.CEILING
-                val text = df.format((et_firstConversion.text.toString().toFloat() *  0.621371)).toString()
-                et_secondConversion?.setText(text)
+                val text = df.format((et_firstLengthConversion.text.toString().toFloat() *  0.621371)).toString()
+                et_secondLengthConversion?.setText(text)
             }
 
-            else if(baseCurrency == "Miles" && convertedToCurrency == "Kilometers"){
+            else if(baseLength == "Miles" && convertedToLength == "Kilometers"){
                 val df = DecimalFormat("#.###")
                 df.roundingMode = RoundingMode.CEILING
-                val text2 = df.format((et_firstConversion.text.toString().toFloat()* 1.6093)).toString()
-                et_secondConversion?.setText(text2)
+                val text2 = df.format((et_firstLengthConversion.text.toString().toFloat()* 1.6093)).toString()
+                et_secondLengthConversion?.setText(text2)
             }
-            else if(baseCurrency == convertedToCurrency) {
+            else if(baseLength == convertedToLength) {
                 Toast.makeText(
                     applicationContext,
                     "Cannot convert the same length",
@@ -82,11 +82,11 @@ class MainActivity : AppCompatActivity() {
     private fun spinnerSetup() {
         val spinner: Spinner = findViewById(R.id.spinner_firstConversion)
         val spinner2: Spinner = findViewById(R.id.spinner_secondConversion)
-        et_firstConversion = findViewById<EditText>(R.id.et_firstConversion)
-        et_secondConversion = findViewById<EditText>(R.id.et_secondConversion)
+        et_firstLengthConversion = findViewById<EditText>(R.id.et_firstLengthConversion)
+        et_secondLengthConversion = findViewById<EditText>(R.id.et_secondLengthConversion)
         ArrayAdapter.createFromResource(
             this,
-            R.array.currencies,
+            R.array.length,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
         ArrayAdapter.createFromResource(
             this,
-            R.array.currencies2,
+            R.array.length2,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                baseCurrency = parent?.getItemAtPosition(position).toString()
+                baseLength = parent?.getItemAtPosition(position).toString()
             }
         })
         spinner2.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                convertedToCurrency = parent?.getItemAtPosition(position).toString()
+                convertedToLength = parent?.getItemAtPosition(position).toString()
             }
         })
     }
