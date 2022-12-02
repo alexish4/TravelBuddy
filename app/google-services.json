@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "324276383254",
+    "project_id": "traevel-buddy",
+    "storage_bucket": "traevel-buddy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324276383254:android:dd91e0514ac8f1ac14cf37",
+        "android_client_info": {
+          "package_name": "com.bignerdranch.android.travelbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324276383254-ail5fa5205gfdg6kgarcr5q31frss1gf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bignerdranch.android.travelbuddy",
+            "certificate_hash": "bbc8d0797fc44aee420068d4d10a0c574a2d618b"
+          }
+        },
+        {
+          "client_id": "324276383254-vmg89k7ibgjultv64sue5obmm6idamun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBUwQVhFNg7IsUCu1PshTLPYBJaK-dbMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324276383254-vmg89k7ibgjultv64sue5obmm6idamun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
