@@ -1,5 +1,7 @@
 package com.bignerdranch.android.travelbuddy
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -7,6 +9,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,6 +20,9 @@ import java.net.URL
 import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var translateButton: Button
+    //private lateinit var menuItem:
 
     //currency
     var baseCurrency = "EUR"
@@ -42,6 +48,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        translateButton = findViewById(R.id.translate_button)
+
         spinnerCurrencySetup()
         textCurrencyChanged()
 
@@ -52,6 +60,11 @@ class MainActivity : AppCompatActivity() {
         //temperature
         spinnerSetup()
         textChangedTemp()
+
+        translateButton.setOnClickListener {
+            val intent = Intent(this, TranslateActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun textCurrencyChanged() {

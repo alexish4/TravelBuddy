@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TravelBuddy</string>
+    <string name="translate_button">Translate</string>
 
     <string-array name="currencies">
         <item>EUR</item>
@@ -35,8 +36,8 @@
     </string-array>
 
     <string-array name="length2">
-        //<item>KM</item>
         //<item>MI</item>
+        //<item>KM</item>
     </string-array>
 
     <string-array name = "temp">
@@ -45,7 +46,7 @@
     </string-array>
 
     <string-array name = "temp2">
-        <item>FA</item>
         <item>CE</item>
+        <item>FA</item>
     </string-array>
 </resources>
