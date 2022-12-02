@@ -102,7 +102,7 @@
                 android:textSize="19sp"
                 android:gravity="top"
                 android:background="@drawable/background"
-                android:textColorHint="color/colorSecondary"/>
+                android:textColorHint="@color/purple_200"/>
 
 
         </com.google.android.material.textfield.TextInputLayout>
