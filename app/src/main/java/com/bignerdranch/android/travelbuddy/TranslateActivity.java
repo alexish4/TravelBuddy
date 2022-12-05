@@ -35,8 +35,8 @@ public class TranslateActivity extends AppCompatActivity {
     private ImageView micIV;
     private MaterialButton translateBtn;
     private TextView translateTV;
-    String[] fromLanguage = {"From", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan", "Czech", "Welsh", "Hindi", "Urdu"};
-    String[] toLanguage = {"To", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan", "Czech", "Welsh", "Hindi", "Urdu"};
+    String[] fromLanguage = {"From", "English", "Spanish", "French", "German", "Japanese", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan", "Czech", "Welsh", "Hindi", "Urdu"};
+    String[] toLanguage = {"To", "English", "Spanish", "French", "German", "Japanese", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan", "Czech", "Welsh", "Hindi", "Urdu"};
     private static final int REQUEST_PERMISSION_CODE = 1;
     int languageCode, fromLanguageCode, toLanguageCode = 0;
 
@@ -162,6 +162,18 @@ public class TranslateActivity extends AppCompatActivity {
         switch (language) {
             case"English":
                 languageCode= FirebaseTranslateLanguage.EN;
+                break;
+            case"Spanish":
+                languageCode= FirebaseTranslateLanguage.ES;
+                break;
+            case"French":
+                languageCode= FirebaseTranslateLanguage.FR;
+                break;
+            case"German":
+                languageCode= FirebaseTranslateLanguage.DE;
+                break;
+            case"Japanese":
+                languageCode= FirebaseTranslateLanguage.JA;
                 break;
             case"Afrikaans":
                 languageCode= FirebaseTranslateLanguage.AF;
