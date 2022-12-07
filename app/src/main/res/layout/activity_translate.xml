@@ -80,29 +80,31 @@
 
 
         </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="173dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:elevation="8dp"
             android:padding="5dp"
-            app:hintEnabled="false"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
             app:boxBackgroundMode="none"
-            android:elevation="8dp">
+            app:hintEnabled="false">
+
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:id="@+id/idEditSource"
-                android:hint="Enter Text"
+                android:layout_width="match_parent"
+                android:layout_height="171dp"
+                android:background="@drawable/background"
                 android:ems="10"
+                android:gravity="top"
+                android:hint="Enter Text"
                 android:importantForAutofill="no"
                 android:inputType="textImeMultiLine|textMultiLine"
                 android:textColor="@color/black"
-                android:textSize="19sp"
-                android:gravity="top"
-                android:background="@drawable/background"
-                android:textColorHint="@color/purple_200"/>
+                android:textColorHint="@color/purple_200"
+                android:textSize="19sp" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
