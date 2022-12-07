@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TravelBuddy</string>
+    <string name="app_name">Travel Helper</string>
     <string name="translate_button">Translate</string>
 
     <string-array name="currencies">
