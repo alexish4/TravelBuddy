@@ -41,12 +41,12 @@
     </string-array>
 
     <string-array name = "temp">
-        <item>FA</item>
         <item>CE</item>
+        <item>FA</item>
     </string-array>
 
     <string-array name = "temp2">
-        <item>CE</item>
         <item>FA</item>
+        <item>CE</item>
     </string-array>
 </resources>

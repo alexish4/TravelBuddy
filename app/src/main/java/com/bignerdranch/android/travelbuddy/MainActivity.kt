@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var et_secondCurrencyConversion: EditText
 
     //temperature
-    var baseTemp = "Fahrenheit"
-    var covertedtoTemp = "Celsius"
+    var baseTemp = "Celsius"
+    var covertedtoTemp = "Fahrenheit"
     private lateinit var et_firstTempConversion: EditText
     private lateinit var et_secondTempConversion: EditText
 
