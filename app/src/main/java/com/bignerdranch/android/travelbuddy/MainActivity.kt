@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onSwapButtonClick(view: View) {
+    fun onCurrencySwapButtonClick(view: View) {
         val currencySpinner: Spinner = findViewById(R.id.spinner_firstCurrencyConversion)
         val currencySpinner2: Spinner = findViewById(R.id.spinner_secondCurrencyConversion)
         //Swap the values of the spinners here
@@ -85,6 +85,44 @@ class MainActivity : AppCompatActivity() {
 
         currencySpinner.setSelection(selectedPosition2)
         currencySpinner2.setSelection(selectedPosition1)
+    }
+
+    fun onLengthSwapButtonClick(view: View) {
+        val lengthSpinner: Spinner = findViewById(R.id.spinner_firstLengthConversion)
+        val lengthSpinner2: Spinner = findViewById(R.id.spinner_secondLengthConversion)
+        //Swap the values of the spinners here
+        val selectedPosition1 = lengthSpinner.selectedItemPosition
+        val selectedPosition2 = lengthSpinner2.selectedItemPosition
+
+        val temp = lengthSpinner.adapter
+        lengthSpinner.adapter = lengthSpinner2.adapter
+        lengthSpinner2.adapter = temp
+
+        val temp2 = baseLength
+        baseLength = convertedToLength
+        convertedToLength = temp2
+
+        lengthSpinner.setSelection(selectedPosition2)
+        lengthSpinner2.setSelection(selectedPosition1)
+    }
+
+    fun onTempSwapButtonClick(view: View) {
+        val tempSpinner: Spinner = findViewById(R.id.spinner_firstTempConversion)
+        val tempSpinner2: Spinner = findViewById(R.id.spinner_secondTempConversion)
+        //Swap the values of the spinners here
+        val selectedPosition1 = tempSpinner.selectedItemPosition
+        val selectedPosition2 = tempSpinner2.selectedItemPosition
+
+        val temp = tempSpinner.adapter
+        tempSpinner.adapter = tempSpinner2.adapter
+        tempSpinner2.adapter = temp
+
+        val temp2 = baseTemp
+        baseTemp = covertedtoTemp
+        covertedtoTemp = temp2
+
+        tempSpinner.setSelection(selectedPosition2)
+        tempSpinner2.setSelection(selectedPosition1)
     }
 
     private fun textCurrencyChanged() {
