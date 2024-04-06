@@ -72,8 +72,8 @@ class MainActivity : AppCompatActivity() {
         val currencySpinner: Spinner = findViewById(R.id.spinner_firstCurrencyConversion)
         val currencySpinner2: Spinner = findViewById(R.id.spinner_secondCurrencyConversion)
         //Swap the values of the spinners here
-        var selectedPosition1 = currencySpinner.selectedItemPosition
-        var selectedPosition2 = currencySpinner2.selectedItemPosition
+        val selectedPosition1 = currencySpinner.selectedItemPosition
+        val selectedPosition2 = currencySpinner2.selectedItemPosition
 
         val temp = currencySpinner.adapter
         currencySpinner.adapter = currencySpinner2.adapter
