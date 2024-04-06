@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var translateButton: Button
+    private lateinit var translateButton: FloatingActionButton
     //private lateinit var menuItem:
 
     //currency
