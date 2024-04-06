@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         translateButton = findViewById(R.id.translate_button)
 
+        //currency
         spinnerCurrencySetup()
         textCurrencyChanged()
 
@@ -65,6 +66,25 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TranslateActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun onSwapButtonClick(view: View) {
+        val currencySpinner: Spinner = findViewById(R.id.spinner_firstCurrencyConversion)
+        val currencySpinner2: Spinner = findViewById(R.id.spinner_secondCurrencyConversion)
+        //Swap the values of the spinners here
+        var selectedPosition1 = currencySpinner.selectedItemPosition
+        var selectedPosition2 = currencySpinner2.selectedItemPosition
+
+        val temp = currencySpinner.adapter
+        currencySpinner.adapter = currencySpinner2.adapter
+        currencySpinner2.adapter = temp
+
+        val temp2 = baseCurrency
+        baseCurrency = convertedToCurrency
+        convertedToCurrency = temp2
+
+        currencySpinner.setSelection(selectedPosition2)
+        currencySpinner2.setSelection(selectedPosition1)
     }
 
     private fun textCurrencyChanged() {
