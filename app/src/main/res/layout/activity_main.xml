@@ -268,10 +268,11 @@
         android:id="@+id/translate_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:clickable="true"
+        app:backgroundTint="#B388FF"
         app:srcCompat="@drawable/translate" />
 
 </RelativeLayout>
