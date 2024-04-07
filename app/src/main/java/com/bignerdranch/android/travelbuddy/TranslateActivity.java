@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +32,8 @@ import java.util.Locale;
 
 public class TranslateActivity extends AppCompatActivity {
     private Spinner fromSpinner, toSpinner;
+    private int fromSpinnerIndex;
+    private int toSpinnerIndex;
     private TextInputEditText sourceText;
     private ImageView micIV;
     private MaterialButton translateBtn;
@@ -54,6 +57,7 @@ public class TranslateActivity extends AppCompatActivity {
         fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fromSpinnerIndex = i;
                 fromLanguageCode = getLanguageCode(fromLanguage[i]);
             }
 
@@ -69,6 +73,7 @@ public class TranslateActivity extends AppCompatActivity {
         toSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                toSpinnerIndex = i;
                 toLanguageCode = getLanguageCode(toLanguage[i]);
             }
 
@@ -115,6 +120,23 @@ public class TranslateActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    public void onSwitchLanguageButtonClick(View view) {
+        if(fromLanguageCode != 0 && toLanguageCode != 0) {
+            int temp = fromSpinnerIndex;
+            fromSpinnerIndex = toSpinnerIndex;
+            toSpinnerIndex = temp;
+
+            fromSpinner.setSelection(fromSpinnerIndex);
+            toSpinner.setSelection(toSpinnerIndex);
+
+            fromLanguageCode = getLanguageCode(fromLanguage[fromSpinnerIndex]);
+            toLanguageCode = getLanguageCode(toLanguage[toSpinnerIndex]);
+        }
+        else {
+            Toast.makeText(TranslateActivity.this, "Please select two languages to switch", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void translateText(int fromLanguageCode, int toLanguageCode, String source) {

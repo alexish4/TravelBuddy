@@ -62,12 +62,15 @@
                 android:padding="3dp"
                 android:layout_gravity="center"/>
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/imageButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/exchange"
-                android:layout_gravity="center"/>
+                app:srcCompat="@drawable/exchange"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                android:onClick="onSwitchLanguageButtonClick" />
 
             <Spinner
                 android:layout_width="0dp"
